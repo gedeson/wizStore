@@ -8,6 +8,10 @@
         <a class="btn-floating btn-large cyan pulse" href="#" title="Imprimir" data-position="top" data-delay="50" data-tooltip="Imprimir relatório?">
             <i class="material-icons">print</i>
         </a>
+
+        <a class="btn-floating btn-large indigo darken-4 pulse" href="{{ url('report') }}" title="Imprimir" data-position="top" data-delay="50" data-tooltip="Imprimir relatório?">
+            <i class="material-icons">arrow_back</i>
+        </a>
     </div>
 
     <div class="right-align"><b>Total de compras: {{ $reports[0]->country_count }}</b></div>

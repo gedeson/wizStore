@@ -143,7 +143,7 @@ class ReportController  extends BaseController {
 			->join('user', 'user.id', '=', 'solicitation.user_id')
 			->where('purchase_solicitation.status', '=', array_search('Pago', Config::get('constants.STATUS')));
 		
-		$reports = $report->orderBy('country', 'desc')->groupBy('country')->take(1)->get();
+		$reports = $report->orderBy('country_count', 'desc')->groupBy('country')->take(1)->get();
 		
 		return View::make('report.top-country', compact('reports'));
 	}

@@ -70,17 +70,4 @@ class HomeController extends BaseController {
 		
 		return View::make('home.index', compact('products'));
 	}
-	
-	public function report() {
-		
-		$report = DB::table('purchase_solicitation')
-			->select(DB::raw('title, price, type, count(`product`.`type`) as type_count, color'))
-			->join('product', 'product.id', '=', 'purchase_solicitation.product_id')
-			->where('purchase_solicitation.status', '=', array_search('Pago', Config::get('constants.STATUS')))
-			->groupBy('type');
-		$reports = $report->get();
-		$allReports = $report->count();
-		
-		return View::make('report.index', compact('reports', 'allReports'));
-	}
 }
