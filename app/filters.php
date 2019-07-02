@@ -48,6 +48,14 @@ Route::filter('auth', function()
 	}
 });
 
+Route::filter('auth.admin', function()
+{
+	$user = Auth::user();
+	if($user->role != array_search('Administrador', Config::get('constants.ROLE')))
+	{
+		return Redirect::home();
+	}
+});
 
 Route::filter('auth.basic', function()
 {
@@ -67,7 +75,7 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-	if (Auth::check()) return Redirect::to('/');
+	if (Auth::check()) return Redirect::to('login');
 });
 
 /*
